@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 def extraerGastosGCP(inicio, fin):
     duracion = int((fin - inicio).total_seconds())
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "RutaClave"#MODIFICAR
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/ubuntu/uniandes/asr_desempeño/LatenciaASR/gcp_key.json" #MODIFICAR
     client = monitoring_v3.MetricServiceClient()
     project_name = "projects/asrdesempeno"
 
@@ -65,9 +65,9 @@ def extraerGastosGCP(inicio, fin):
 def extraerGastosAWS(inicio,fin):
     duracion = int((fin - inicio).total_seconds())
     session = boto3.Session(
-        aws_access_key_id="key",#MODIFICAR
-        aws_secret_access_key="secret",#MODIFICAR
-        aws_session_token="session",#MODIFICAR
+        aws_access_key_id="ASIAYWEWXFQRHAY6CTPD", # MODIFICAR
+        aws_secret_access_key="m/gH1N+MLbZU/576S6ClUtNLBOMceC23bFMeLfgq", # MODIFICAR
+        aws_session_token="IQoJb3JpZ2luX2VjEGQaCXVzLXdlc3QtMiJIMEYCIQC9sSgWA9utgxrqTlyxGY6k2yokb1sj/atK5sOFT4OY+AIhAO8TPQO37iZlg+7KInKpuIZHP09DMJXGLo/ERDEmVRXeKrQCCC0QAhoMNTk3MzE2NTQ1NTcwIgzHb3a6pPUAYxsK+9AqkQK70M+AphJHs61iDgsk7/i9BhKD8hNeTvB5FNXjdrOivtlZKf6JI29BlAiM8/zFtu6WCan5+mOZogEPVPEZlkIhG6nhG1ltKL9QFeEytlfszl/FqDatrcEj4Q5qvo6b13an0qWdaQTjpmhSwwDLCGu4vYVSMkfN+SznovMaGie7P0rioZEL79Izy4G6xrKv6acj7nS2sykIM8Zft8OZRsZOkTvIHcquBzCoUxiOc2Tlq0Da9EvlFGcVSJMO88Do1jzG0ZwnA1gtR+l46xHvwip1JxWbYP+6+ONYbzQJ1RNIGWMKY+ozG8LvzPXFxWdYpMuLlZNHSX7VpZaPZAWAVJMoPbWcfN/WYw8m+eypV5O9SNYwn7/jzgY6nAHz4WxAOpOXEr8Fx0yHTTZBkhY1EhoQZ029xcO7XZkdRgUw2pv1EeaigYEmzSR+RVSmubvH83S7J4CnYQBtYXbdiHYonsco9ZkutmxSpcNKDtbME1C7yKD2prVdqqe6pL2X6Hbn67RF50Cmp751cuSL8ZDdkWJqctIged56/R6jd9oiKjGHHTUDoeF7Bg97Iy3mChi3MwIk8+yGdm0=", #MODIFICAR
         region_name="us-east-1"
         )
 

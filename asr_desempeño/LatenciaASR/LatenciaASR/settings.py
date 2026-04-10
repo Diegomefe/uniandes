@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-d@-*4hnvezme(3ab6mrdxz^fj7hk7i_zn1^k2^)4mq=1h*gqsa
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'LatenciaASR.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'bd_negocio',
+        'USER': 'monitor_user',
+        'PASSWORD': 'isis2503',
+        'HOST': '172.31.43.183',
+        'PORT': '5432',
     }
 }
 
