@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'LatenciaASR.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'bd_negocio',
-        'USER': 'monitor_user',
+        'NAME': 'negocio_db',
+        'USER': 'monitoring_user',
         'PASSWORD': 'isis2503',
-        'HOST': '172.31.43.183',
+        'HOST': '172.31.35.81',
         'PORT': '5432',
     }
 }
