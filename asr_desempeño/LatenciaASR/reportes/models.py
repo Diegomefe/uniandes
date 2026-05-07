@@ -3,7 +3,7 @@ import hashlib
 
 class Facturacion_Consolidada(models.Model):
     mes = models.CharField(max_length=7) # 2026-04
-    empresa = models.CharField(max_length=100, default='Generica')
+    empresa = models.CharField(max_length=100, default='Beta Corp')
     cpu_avg_aws = models.FloatField(default=0.0)
     netout_gb_aws = models.FloatField(default=0.0)
     cpu_avg_gcp = models.FloatField(default=0.0)
@@ -20,6 +20,14 @@ class Facturacion_Consolidada(models.Model):
         data = f"{self.empresa}|{self.costo_total:.2f}|{self.mes}"
         return hashlib.sha256(data.encode()).hexdigest()
     
+    def verificar_integridad(self):
+        hash_calculado = self.generarHash()
+
+        if self.hash == hash_calculado:
+            return True, "OK"
+        else:
+            return False, f"ALTERACIÓN DETECTADA: El hash guardado era {self.hash}, y el nuevo dato es {hash_calculado}"
+        
     def save(self, *args, **kwargs):
         self.costo_total = float(self.costo_aws) + float(self.costo_gcp)
         self.hash = self.generarHash()
